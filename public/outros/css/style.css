@@ -1706,3 +1706,188 @@ label span {
   border: 1px solid #ccc; 
   
 }
+
+/* botão do whatsapp */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    background-color: darkorange;
+    color: white;
+    text-decoration: none;
+  }
+
+   /* Botão flutuante - Desktop */
+  .whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+
+  .whatsapp-float:hover {
+    background-color: darkorange;
+    color: white;
+    text-decoration: none;
+  }
+
+  .whatsapp-float::after {
+    content: "Fale conosco";
+    position: absolute;
+    right: 70px;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .whatsapp-float:hover::after {
+    opacity: 1;
+  }
+
+  /* Barra Mobile - visível apenas em telas pequenas */
+  .barra-mobile-whatsapp {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .whatsapp-float {
+      display: none !important; /* Oculta no mobile */
+    }
+
+    .barra-mobile-whatsapp {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: orange;
+      padding: 12px 0;
+      text-align: center;
+      z-index: 99999;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .barra-mobile-whatsapp a {
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .barra-mobile-whatsapp a:hover {
+      background-color: darkorange;
+      transition: background-color 0.3s ease;
+    }
+
+    .barra-mobile-whatsapp i {
+      font-size: 22px;
+    }
+  }
+
+.banner-responsivo {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  margin: 0 auto;
+  transform: none !important;
+  position: static !important;
+  left: auto !important;
+}
+
+.banner-estatico {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.banner-estatico picture,
+.banner-estatico img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.conteudo-banner {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translate(-50%, -28%);
+    text-align: center;
+    color: #fff; /* texto branco */
+    z-index: 10;
+    padding: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* melhora leitura sobre fundo colorido */
+}
+
+.conteudo-banner h1 {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.conteudo-banner h2 {
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .conteudo-banner {
+        top: 25%;
+        transform: translate(-50%, -25%);
+        padding: 10px;
+    }
+
+    .conteudo-banner h1 {
+        font-size: 3rem;
+    }
+
+    .conteudo-banner h2 {
+        font-size: 1.6rem;
+    }
+}
+
+
+
+

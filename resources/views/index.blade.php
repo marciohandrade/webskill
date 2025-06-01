@@ -91,65 +91,22 @@
             </div>
         </div>
     </section>
-    <div class="fullwidthbanner" id="home">
-        <div class="ken-burns-banner">
-            <ul> <!-- SLIDE -->
-                <li 
-                    data-transition="fade" 
-                    data-thumb="{{ url('outros/img/bg_imagem1.jpeg') }}" 
-                    data-title="Bem vindo">
+    <section id="home" class="banner-estatico">
+        <picture>
+            <source media="(max-width: 768px)" srcset="{{ url('outros/img/bg_imagem_mobile.jpeg') }}">
+            <img 
+                class="banner-responsivo" 
+                src="{{ url('outros/img/bg_imagem_desk.jpeg') }}" 
+                alt="Banner institucional Web Skill com imagem de fundo responsiva">
+        </picture>
 
-                    <!-- MAIN IMAGE -->
-                    <img src="{{ url('outros/img/bg_imagem1.jpeg') }}" alt="Banner com fundo digital da Web Skill">
-
-                    <!-- LAYERS -->
-                    <!-- Título -->
-                    <div 
-                        class="caption customin customout tp-resizeme Ken-burns-heading font-alt"
-                        data-x="center" data-hoffset="0"
-                        data-y="200" data-voffset="0"
-                        data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;scaleX:1;scaleY:1;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" 
-                        data-customout="scaleX:0.75;scaleY:0.75;opacity:0;transformPerspective:300;transformOrigin:50% 50%;" 
-                        data-speed="800" data-start="1300"
-                        data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn">
-                        <h1>Seja Bem-Vindo!</h1>
-                    </div>
-
-                    <!-- Subtítulo -->
-                    <div 
-                        class="caption customin customout tp-resizeme Ken-burns-subtitulo font-alt text-center"
-                        data-x="center" data-hoffset="0"
-                        data-y="280" data-voffset="0"
-                        data-customin="x:0;y:0;z:0;rotationX:90;rotationY:0;scaleX:1;scaleY:1;opacity:0;transformPerspective:200;transformOrigin:50% 0%;" 
-                        data-customout="scaleX:0.75;scaleY:0.75;opacity:0;transformPerspective:300;transformOrigin:50% 50%;" 
-                        data-speed="800" data-start="1300"
-                        data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn">
-                        <h2>
-                            Desenvolvemos Soluções Digitais Adaptadas às<br>
-                            Necessidades da Sua Empresa!
-                        </h2>
-                    </div>
-
-                    <!-- Botão -->
-                    <div 
-                        class="caption customin customout tp-resizeme"
-                        data-x="center" data-hoffset="0"
-                        data-y="center" data-voffset="120"
-                        data-customin="x:50;y:150;scaleX:0.5;scaleY:0.5;opacity:0;transformPerspective:0;transformOrigin:50% 50%;" 
-                        data-customout="scaleX:0.75;scaleY:0.75;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" 
-                        data-speed="800" data-start="1500"
-                        data-easing="Power4.easeOut" data-endspeed="500" data-endeasing="Power4.easeIn">
-
-                        <div class="rev-buttons scrollto">
-                            <a href="#about" class="btn btn-theme-color btn-lg" aria-label="Saiba mais sobre nós">
-                                Sobre
-                            </a>
-                        </div>
-                    </div>
-                </li>                
-            </ul>
+        <div class="conteudo-banner">
+            <h1>Seja Bem-Vindo!</h1>
+            <h2>Desenvolvemos Soluções Digitais Adaptadas às<br>Necessidades da Sua Empresa!</h2>
+            <a href="#about" class="btn btn-theme-color btn-lg" aria-label="Saiba mais sobre nós">Sobre</a>
         </div>
-    </div>
+    </section>
+
 
     <section id="navigation2" aria-label="Menu principal">
         <div class="navbar navbar-default navbar-fixed-top sticky" role="navigation">
@@ -753,6 +710,24 @@
     <!--back to top end-->
     <!--footer end-->
 
+    <!-- Botão WhatsApp Flutuante (Desktop) -->
+<a href="https://api.whatsapp.com/send?phone=5511991874115&text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços."
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="Fale conosco pelo WhatsApp">
+   <i class="fa fa-whatsapp"></i>
+</a>
+
+    <!-- Barra Mobile WhatsApp (Mobile) -->
+    <div class="barra-mobile-whatsapp">
+    <a href="https://api.whatsapp.com/send?phone=5511991874115&text=Olá!%20Gostaria%20de%20falar%20com%20um%20consultor."
+        target="_blank"
+        aria-label="Fale conosco pelo WhatsApp">
+        <i class="fa fa-whatsapp"></i>
+        <span>Fale conosco</span>
+    </a>
+    </div>
+
     <!--script files-->
     <script src="{{url('outros/js/jquery.min.js')}}"></script>
     <script src="{{url('outros/js/moderniz.min.js')}}" ></script>
@@ -786,7 +761,7 @@
     <script src="{{url('outros/js/isotope-custom.js')}}" ></script>
     <!-- <script  src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> -->
 
-
+    
 </body>
 
 </html>
