@@ -1815,11 +1815,15 @@ label span {
 
     .barra-mobile-whatsapp a:hover {
       background-color: darkorange;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease;      
     }
 
     .barra-mobile-whatsapp i {
       font-size: 22px;
+    }
+
+    .barra-mobile-whatsapp a:visited {
+      color: white;
     }
   }
 
@@ -2083,6 +2087,7 @@ label span {
 @media (min-width: 1025px) {
     .conteudo-banner h1 {
         font-size: 5.5rem;
+        margin-top: 50px;
     }
 
     .conteudo-banner h2 {
@@ -2106,6 +2111,7 @@ label span {
 @media (min-width: 1920px) {
     .conteudo-banner h1 {
         font-size: 6rem;
+        margin-top: 50px;
     }
 
     .conteudo-banner h2 {
@@ -2128,6 +2134,7 @@ label span {
     .banner-estatico img {
         height: 60vh; /* ou use 50vh se quiser ainda menor */
         object-fit: cover;
+        margin-top: 40px;
     }
 
     .banner-wrapper {
