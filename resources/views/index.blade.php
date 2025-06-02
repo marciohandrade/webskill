@@ -31,7 +31,7 @@
     <link href="{{url('outros/css/style.css')}}" rel="stylesheet" type="text/css">
 
     <!--flex slider css-->
-    <!-- <link href="{{url('outros/css/flexslider.css')}}" rel="stylesheet"> <!-- POSSIVELMENTE NÃO UTILIZADO --> -->
+    <!-- <link href="{{url('outros/css/flexslider.css')}}" rel="stylesheet"> -->
 
     <!--font awesome css-->
     <link href="{{url('outros/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -39,16 +39,10 @@
     <!--animated css-->
     <link href="{{url('outros/css/animate.css')}}" rel="stylesheet">
 
-    <!--owl carousel css-->
-    <!-- <link href="{{url('outros/css/owl.carousel.css')}}" rel="stylesheet" type="text/css" media="screen"> <!-- POSSIVELMENTE NÃO UTILIZADO --> -->
-    <!-- <link href="{{url('outros/css/owl.theme.css')}}" rel="stylesheet" type="text/css" media="screen"> <!-- POSSIVELMENTE NÃO UTILIZADO --> -->
-
-<!--Revolution slider css-->
-<link href="{{url('outros/rs-plugin/css/settings.css')}}" rel="stylesheet" type="text/css" media="screen">
-
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
-</head>
+    <!--Revolution slider css-->
+    <link href="{{url('outros/rs-plugin/css/settings.css')}}" rel="stylesheet" type="text/css" media="screen">
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    </head>
 <!-- Google Tag Manager -->
 
 <body data-spy="scroll" data-target="#navigation" data-offset="80">
@@ -92,6 +86,30 @@
         </div>
     </section>
     <section id="home" class="banner-estatico">
+        <picture class="banner-imagem-fundo">
+            <source media="(max-width: 768px)" srcset="{{ url('outros/img/bg_imagem_mobile.jpeg') }}">
+            <img 
+                class="banner-responsivo" 
+                src="{{ url('outros/img/bg_imagem_desk.jpeg') }}" 
+                alt="Banner institucional Web Skill com imagem de fundo responsiva">
+        </picture>
+
+        <div class="banner-wrapper">
+            <div class="conteudo-banner">
+                <h1>Seja Bem-Vindo!</h1>
+                <h2>Desenvolvemos Soluções Digitais Adaptadas às Necessidades da Sua Empresa!</h2>
+                <p>A presença online é o primeiro passo para o sucesso digital.</p>
+                <ul>
+                    <li><i class="fa fa-check"></i> Sites modernos e responsivos</li>
+                    <li><i class="fa fa-check"></i> SEO para aparecer no Google</li>
+                    <li><i class="fa fa-check"></i> Atendimento personalizado</li>
+                </ul>
+                <a href="#about" class="btn btn-theme-color btn-lg">Sobre</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="home" class="banner-estatico">
         <picture>
             <source media="(max-width: 768px)" srcset="{{ url('outros/img/bg_imagem_mobile.jpeg') }}">
             <img 
@@ -100,12 +118,23 @@
                 alt="Banner institucional Web Skill com imagem de fundo responsiva">
         </picture>
 
-        <div class="conteudo-banner">
-            <h1>Seja Bem-Vindo!</h1>
-            <h2>Desenvolvemos Soluções Digitais Adaptadas às<br>Necessidades da Sua Empresa!</h2>
-            <a href="#about" class="btn btn-theme-color btn-lg" aria-label="Saiba mais sobre nós">Sobre</a>
+        <div class="banner-wrapper">
+            <div class="conteudo-banner">
+                <h1>Seja Bem-Vindo!</h1>
+                <h2>Desenvolvemos Soluções Digitais Adaptadas às Necessidades da Sua Empresa!</h2>
+                <p>A presença online é o primeiro passo para o sucesso digital.</p>
+                <ul>
+                    <li><i class="fa fa-check"></i> Sites modernos e responsivos</li>
+                    <li><i class="fa fa-check"></i> SEO para aparecer no Google</li>
+                    <li><i class="fa fa-check"></i> Atendimento personalizado</li>
+                </ul>
+                <a href="#about" class="btn btn-theme-color btn-lg">Sobre</a>
+            </div>
         </div>
-    </section>
+
+
+
+    </section> -->
 
 
     <section id="navigation2" aria-label="Menu principal">

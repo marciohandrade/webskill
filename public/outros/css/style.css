@@ -11,7 +11,8 @@
 */
 html,
 body {
-  height: 100%;
+  height: 95%;
+  /*width: 95%;*/
   color: #121212;
 }
 
@@ -1849,45 +1850,288 @@ label span {
     object-position: center;
 }
 
+/* Wrapper do banner para controlar altura e overflow */
+.banner-wrapper {
+    position: relative;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+/* Conteúdo centralizado */
 .conteudo-banner {
     position: absolute;
     top: 28%;
     left: 50%;
     transform: translate(-50%, -28%);
     text-align: center;
-    color: #fff; /* texto branco */
+    color: #fff;
     z-index: 10;
     padding: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* melhora leitura sobre fundo colorido */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .conteudo-banner h1 {
-    font-size: 4.5rem;
-    margin-bottom: 1.5rem;
+    font-size: clamp(2rem, 6vw, 5.2rem);
     font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .conteudo-banner h2 {
-    font-size: 2.3rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2.6rem);
+    font-weight: normal;
+    margin-top: 10px;
+    line-height: 1.5;
 }
 
-@media (max-width: 768px) {
+.conteudo-banner p {
+    font-size: clamp(1rem, 3.5vw, 1.8rem);
+    margin-top: 25px;
+}
+
+.conteudo-banner ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+    font-size: clamp(0.9rem, 3vw, 1.5rem);
+    line-height: 1.6;
+}
+
+.conteudo-banner ul li i {
+    color: orange;
+    margin-right: 10px;
+}
+
+.conteudo-banner a.btn {
+    margin-top: 30px;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
     .conteudo-banner {
         top: 25%;
         transform: translate(-50%, -25%);
+        padding: 15px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .conteudo-banner {
+        top: 15%;
+        transform: translate(-50%, -15%);
         padding: 10px;
     }
 
     .conteudo-banner h1 {
-        font-size: 3rem;
+        font-size: 2rem;
     }
 
     .conteudo-banner h2 {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
+    }
+
+    .conteudo-banner p,
+    .conteudo-banner ul {
+        font-size: 1rem;
+    }
+
+    .conteudo-banner a.btn {
+        font-size: 1rem;
     }
 }
 
+  @media (max-width: 360px) {
+    .conteudo-banner {
+        top: 10%;
+        transform: translate(-50%, -10%);
+        padding: 10px;
+    }
 
+    .conteudo-banner h1 {
+        font-size: 1.8rem;
+    }
 
+    .conteudo-banner h2 {
+        font-size: 1.1rem;
+    }
+
+    .conteudo-banner p,
+    .conteudo-banner ul {
+        font-size: 0.95rem;
+    }
+
+    .conteudo-banner a.btn {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 10px;
+        height: auto;
+    }
+
+    .conteudo-banner {
+        position: static !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .conteudo-banner h1 {
+        font-size: 2rem;
+    }
+
+    .conteudo-banner h2 {
+        font-size: 1.2rem;
+    }
+
+    .conteudo-banner p,
+    .conteudo-banner ul {
+        font-size: 1rem;
+    }
+
+    .conteudo-banner a.btn {
+        font-size: 1rem;
+    }
+}
+
+/* Define a section com altura total da tela */
+.banner-estatico {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* A imagem (desktop ou mobile) vai se ajustar totalmente */
+.banner-estatico picture,
+.banner-estatico img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Centraliza o conteúdo sobre a imagem */
+.banner-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+}
+
+/* Conteúdo responsivo */
+.conteudo-banner {
+    color: white;
+    max-width: 900px;
+    width: 100%;
+}
+
+.conteudo-banner h1 {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.conteudo-banner h2 {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    margin-bottom: 1.5rem;
+}
+
+.conteudo-banner p {
+    font-size: clamp(1rem, 3vw, 1.6rem);
+    margin-bottom: 1.5rem;
+}
+
+.conteudo-banner ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1rem, 2.8vw, 1.4rem);
+}
+
+.conteudo-banner ul li {
+    margin-bottom: 10px;
+}
+
+.conteudo-banner ul li i {
+    color: orange;
+    margin-right: 8px;
+}
+
+.conteudo-banner a.btn {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    padding: 12px 24px;
+}
+
+@media (min-width: 1025px) {
+    .conteudo-banner h1 {
+        font-size: 5.5rem;
+    }
+
+    .conteudo-banner h2 {
+        font-size: 3rem;
+    }
+
+    .conteudo-banner p {
+        font-size: 2rem;
+    }
+
+    .conteudo-banner ul {
+        font-size: 1.8rem;
+    }
+
+    .conteudo-banner a.btn {
+        font-size: 1.6rem;
+        padding: 14px 28px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .conteudo-banner h1 {
+        font-size: 6rem;
+    }
+
+    .conteudo-banner h2 {
+        font-size: 3.2rem;
+    }
+
+    .conteudo-banner p,
+    .conteudo-banner ul {
+        font-size: 2rem;
+    }
+
+    .conteudo-banner a.btn {
+        font-size: 1.8rem;
+        padding: 16px 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-estatico picture,
+    .banner-estatico img {
+        height: 60vh; /* ou use 50vh se quiser ainda menor */
+        object-fit: cover;
+    }
+
+    .banner-wrapper {
+        height: 60vh; /* mesmo valor da imagem */
+    }
+}
 
