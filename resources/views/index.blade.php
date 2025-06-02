@@ -25,7 +25,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--bootstrap css-->
-<link href="{{url('outros/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{url('outros/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <!--custom css-->
     <link href="{{url('outros/css/style.css')}}" rel="stylesheet" type="text/css">
