@@ -21,3 +21,11 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::prefix('portfolio')->group(function () {
+    Route::get('/clinica', fn() => view('portfolio.clinica.home'))->name('portfolio.clinica');
+    Route::get('/estetica', fn() => view('portfolio.estetica.home'))->name('portfolio.estetica');
+    Route::get('/advocacia', fn() => view('portfolio.advocacia.home'))->name('portfolio.advocacia');
+    Route::get('/loja', fn() => view('portfolio.loja.home'))->name('portfolio.loja');
+    Route::get('/autonomo', fn() => view('portfolio.autonomo.home'))->name('portfolio.autonomo');
+});
+

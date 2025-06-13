@@ -455,91 +455,132 @@
     </section>
 
     <!-- secao de portiforio inicia aqui -->
-    <!--our work section start here-->
-    <section id="work" class="padding-50">
-        <div class="work-section-1">
-            <div class="container">
-                <div class="section-heading text-center">
-                    <h2 class="large section-title">Portfólio</h2>
+    <!-- portifolio novo -->
+     <section id="work" class="padding-50 bg-light">
+        <div class="container">
+
+            <!-- Título principal -->
+            <div class="section-heading text-center">
+            <h2 class="large section-title">Portfólio</h2>
+            <p class="subtitle text-center">Conheça os trabalhos mais recentes e outros projetos já entregues</p>
+            </div>
+
+            <!-- 🔸 Projetos / Modelos Recentes -->
+            <div class="mb-5">
+                <h3 class="section-subtitle text-left">🔸 Projetos / Modelos Recentes</h3>
+                <p class="subtitle">Modelos de sites desenvolvidos recentemente, ideais para profissionais autônomos e pequenas empresas.</p>
+            </div>
+                <div class="row mt-4"><br></div>
+                <div class="row mt-5 text-center">
+                    <div class="col-md-4 col-sm-6 mb-5 mx-auto">
+                        <div class="project-post p-3 shadow-sm border rounded">                        
+                            <!-- imagem com tamanho fixo -->
+                            <div class="image-wrapper">
+                                <img 
+                                src="{{ url('img/portifolio/clinica/img-card-site-clinicas.png') }}" 
+                                alt="Modelo Clínica" 
+                                width="200" 
+                                height="200" 
+                                style="object-fit: cover;" 
+                                class="img-fluid mx-auto d-block"
+                                >
+                            </div>
+
+                            <div class="work-sesc mt-3 text-center">
+                                <p>Clínica ou Consultório</p>
+                                <p><br></p>
+                                <a href="{{ url('/portfolio/clinica') }}" target="_blank" class="btn btn-theme-color btn-sm mt-2">Ver modelo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- 📁 Projetos Realizados -->
+            <div class="mb-4 mt-5">
+            <h3 class="section-subtitle text-left">📁 Projetos Realizados</h3>
+            <p class="subtitle">Projetos de desenvolvimento e manutenção entregues nos últimos anos, em diversas tecnologias.</p>
+            <div class="row mt-4"><br></div>
+            </div>
+
+            <div class="row text-center">
+
+            <!-- Projeto 1 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work1.jpg')}}" class="img-responsive" alt="Projeto em C#">
+                </div>
+                <div class="work-sesc mt-3">
+                    <p>C#</p>
+                </div>
                 </div>
             </div>
 
-            <div class="container">
-                <!-- Filtros -->
-                <ul class="filter list-inline">
-                    <li><a class="active" href="#" data-filter="*">Todos Projetos</a></li>
-                    <li><a href="#" data-filter=".desenvolvimento">Desenvolvimento</a></li>
-                    <li><a href="#" data-filter=".manutencao">Manutenção / Melhorias</a></li>
-                </ul>
-
-                <div class="row">
-                    <div class="portfolio-box iso-call work-col-4">
-
-                        <!-- Projeto 1 -->
-                        <div class="project-post desenvolvimento">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work1.jpg')}}" class="img-responsive" alt="Projeto desenvolvido em C#">
-                            </div>
-                            <div class="work-sesc">
-                                <p>C#</p>
-                            </div>
-                        </div>
-
-                        <!-- Projeto 2 -->
-                        <div class="project-post manutencao">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work2.jpg')}}" class="img-responsive" alt="Projeto de manutenção em VB.NET">
-                            </div>
-                            <div class="work-sesc">
-                                <p>VB.NET</p>
-                            </div>
-                        </div>
-
-                        <!-- Projeto 3 -->
-                        <div class="project-post manutencao">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work3.jpg')}}" class="img-responsive" alt="Projeto de manutenção usando C#">
-                            </div>
-                            <div class="work-sesc">
-                                <p>C#</p>
-                            </div>
-                        </div>
-
-                        <!-- Projeto 4 -->
-                        <div class="project-post manutencao">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work5.png')}}" class="img-responsive" alt="Projeto em PHP / Laravel">
-                            </div>
-                            <div class="work-sesc">
-                                <p>PHP / Laravel</p>
-                            </div>
-                        </div>
-
-                        <!-- Projeto 5 -->
-                        <div class="project-post manutencao">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work6.png')}}" class="img-responsive" alt="Manutenção em VB.NET">
-                            </div>
-                            <div class="work-sesc">
-                                <p>VB.NET</p>
-                            </div>
-                        </div>
-
-                        <!-- Projeto 6 -->
-                        <div class="project-post desenvolvimento">
-                            <div class="image-wrapper">
-                                <img src="{{url('img/portifolio/sec-work8.png')}}" class="img-responsive" alt="Desenvolvimento em PHP / Laravel">
-                            </div>
-                            <div class="work-sesc">
-                                <p>PHP / Laravel</p>
-                            </div>
-                        </div>
-
-                    </div>
+            <!-- Projeto 2 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work2.jpg')}}" class="img-responsive" alt="Projeto em VB.NET">
                 </div>
+                <div class="work-sesc mt-3">
+                    <p>VB.NET</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work3.jpg')}}" class="img-responsive" alt="Manutenção em C#">
+                </div>
+                <div class="work-sesc mt-3">
+                    <p>C#</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Projeto 4 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work5.png')}}" class="img-responsive" alt="Projeto em PHP / Laravel">
+                </div>
+                <div class="work-sesc mt-3">
+                    <p>PHP / Laravel</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Projeto 5 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work6.png')}}" class="img-responsive" alt="Manutenção em VB.NET">
+                </div>
+                <div class="work-sesc mt-3">
+                    <p>VB.NET</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- Projeto 6 -->
+            <div class="col-md-4 col-sm-6 mb-5">
+                <div class="project-post p-3 shadow-sm border rounded">
+                <div class="image-wrapper">
+                    <img src="{{url('img/portifolio/sec-work8.png')}}" class="img-responsive" alt="Desenvolvimento em PHP / Laravel">
+                </div>
+                <div class="work-sesc mt-3">
+                    <p>PHP / Laravel</p>
+                </div>
+                </div>
+            </div>
+
             </div>
         </div>
     </section>
+
+    <!-- portifolio novo -->
 
     <!-- portiforio finaliza aqui -->    
     <div id="modalcontato" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
@@ -756,7 +797,7 @@
         <span>Fale conosco</span>
     </a>
     </div>
-
+    
     <!--script files-->
     <script src="{{url('outros/js/jquery.min.js')}}"></script>
     <script src="{{url('outros/js/moderniz.min.js')}}" ></script>
