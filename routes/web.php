@@ -1,25 +1,12 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/* Route::get('/', function () {
-    return view('welcome');
-}); */
 
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/contato', [App\Http\Controllers\ContatoController::class, 'enviar'])
+    ->name('contato.enviar');
 
 Route::prefix('portfolio')->group(function () {
     Route::get('/clinica', fn() => view('portfolio.clinica.home'))->name('portfolio.clinica');
@@ -29,3 +16,12 @@ Route::prefix('portfolio')->group(function () {
     Route::get('/autonomo', fn() => view('portfolio.autonomo.home'))->name('portfolio.autonomo');
 });
 
+// ========================================
+// PAINEL ADMIN - CONTATOS
+// ========================================
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/contatos', [App\Http\Controllers\ContatoController::class, 'admin'])->name('contatos.index');
+    Route::get('/contatos/{contato}', [App\Http\Controllers\ContatoController::class, 'show'])->name('contatos.show');
+    Route::patch('/contatos/{contato}/respondido', [App\Http\Controllers\ContatoController::class, 'marcarRespondido'])->name('contatos.respondido');
+    Route::patch('/contatos/{contato}/observacao', [App\Http\Controllers\ContatoController::class, 'adicionarObservacao'])->name('contatos.observacao');
+});

@@ -41,8 +41,8 @@
 
     <!--Revolution slider css-->
     <link href="{{url('outros/rs-plugin/css/settings.css')}}" rel="stylesheet" type="text/css" media="screen">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-</head>
+        <meta name="csrf-token" content="{{ csrf_token() }}" />
+    </head>
 <!-- Google Tag Manager -->
 
 <body data-spy="scroll" data-target="#navigation" data-offset="80">
@@ -489,7 +489,7 @@
                             <div class="work-sesc mt-3 text-center">
                                 <p>Clínica ou Consultório</p>
                                 <p><br></p>
-                                <a href="{{ url('https://wsclinica.webskill.com.br') }}" target="_blank" class="btn btn-theme-color btn-sm mt-2">Ver modelo</a>
+                                <a href="{{ url('/portfolio/clinica') }}" target="_blank" class="btn btn-theme-color btn-sm mt-2">Ver modelo</a>
                             </div>
                         </div>
                     </div>
@@ -628,83 +628,90 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h4>Entrar em contato</h4>
-                        
-                        <!-- Mensagens de Sucesso/Erro -->
-                        @if(session('success'))
-                            <div class="alert alert-success" role="alert" style="margin-bottom: 20px; padding: 15px; border: 1px solid #d4e5d4; background-color: #dff0d8; color: #3c763d; border-radius: 4px;">
-                                <strong><i class="fa fa-check-circle"></i> Sucesso!</strong> 
-                                {{ session('success') }}
+                        <form name="formcontato" id="formcontato" method="post" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Nome<span>*</span></label>
+                                            <input type="text" class="form-control" placeholder="informe um nome" id="nome" name="nome" required data-validation-required-message="Por favor, forneça o seu nome.">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Empresa<span>*</span></label>
+                                            <input type="text" class="form-control" placeholder="informe a empresa" id="empresa" required data-validation-required-message="Por favor, forneça a Empresa.">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        @endif
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>E-mail<span>*</span></label>
+                                            <input type="text" class="form-control" maxlength="60" placeholder="informe um email válido" id="email" name="email" data-validation-required-message="Por favor, forneça um e-mail válido.">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
 
-                        <!-- Formulário de Contato -->
-                        <div class="col-lg-10 col-xl-8 mx-auto">
-                            <form action="{{ route('contato.enviar') }}" method="POST">
-                                @csrf
-                                
-                                <!-- Texto explicativo -->
-                                <p class="text-muted mb-4">
-                                    Preencha o formulário abaixo e entraremos em contato o mais breve possível.
-                                </p>
-                                
-                                <!-- Linha 1: Nome completo (largura total) -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label>Nome completo <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="nome" placeholder="Informe seu nome completo" required>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Telefone<span></span></label>
+                                            <input type="text" class="form-control" placeholder="informe o telefone" id="tel" name="tel">
+                                            <p class="help-block"></p>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Celular/Whatsapp<span></span></label>
+                                            <input type="text" class="form-control" placeholder="informe o whatsapp" id="cel" name="cel">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
 
-                                <!-- Linha 2: Email + Telefone (lado a lado) -->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label>E-mail <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label>Telefone</label>
-                                            <input type="text" class="form-control" name="tel" placeholder="(11) 99999-9999">
-                                        </div>
-                                    </div>
                                 </div>
 
-                                <!-- Linha 3: Assunto (largura total) -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label>Assunto</label>
-                                            <input type="text" class="form-control" name="assunto" placeholder="Informe o assunto do contato">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Assunto<span></span></label>
+                                            <input type="text" class="form-control" maxlength="80" placeholder="informe um assunto" id="assunto" name="assunto">
+                                            <p class="help-block"></p>
                                         </div>
                                     </div>
                                 </div>
-
-                                <!-- Linha 4: Mensagem (largura total) -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-3">
-                                            <label>Mensagem <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="mensagem" rows="5" placeholder="Descreva sua solicitação com detalhes..." required></textarea>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Mensagem<span>*</span></label>
+                                    <textarea rows="5" class="form-control" placeholder="informe uma mensagem" id="mensagem" name="mensagem" required data-validation-required-message="Por favor, forneça a mensagem."></textarea>
+                                    <p class="help-block"></p>
                                 </div>
-
-                                <!-- Botão de envio -->
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-lg">
-                                            <i class="fa fa-paper-plane me-2"></i>
-                                            Enviar Mensagem
-                                        </button>
-                                    </div>
+                            </div>
+                            <div id="success"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button id="btnenviar" name="btnenviar" type="submit" class="btn btn-theme-color btn-lg">Enviar
+                                        <!-- <span class="glyphicon glyphicon-circle-arrow-right"></span> -->
+                                    </button>
                                 </div>
-                            </form>
-                        </div>
-                        
+                            </div>
+                        </form>
+                        <!--contact form-->
                     </div>
                     <div class="col-md-4">
                         <h4>Dados de Contato</h4>
@@ -814,8 +821,8 @@
     <script src="{{url('outros/js/jquery.imagesloaded.min.js')}}" ></script>
     <script src="{{url('outros/js/jquery.counterup.min.js')}}" ></script>
     <script src="{{url('outros/js/jquery.countdown.js')}}" ></script>
-    <!-- <script src="{{url('outros/js/contact_me.js')}}" ></script> -->
-    <!-- <script src="{{url('outros/js/jqBootstrapValidation.js')}}" ></script> -->
+    <script src="{{url('outros/js/contact_me.js')}}" ></script>
+    <script src="{{url('outros/js/jqBootstrapValidation.js')}}" ></script>
     <script src="{{url('outros/js/custom.js')}}" ></script>
     <!--revolution slider plugins-->
     <script src="{{url('outros/rs-plugin/js/jquery.themepunch.tools.min.js')}}" ></script>
