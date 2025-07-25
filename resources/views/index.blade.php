@@ -65,11 +65,16 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <!-- Logo -->
-                    <a href="#home" class="navbar-brand">
-                        <strong style="color: orange;">W</strong>eb <strong style="color: orange;">S</strong>kill
-                    </a>
+                    <!-- Logo -->                    
+                        <div class="header-content">
+                            <div class="logo">                            
+                                <div class="logo-main">                                    
+                                    <span class="highlight">W</span>eb <span class="highlight">S</span>kill
+                                </div>                                                            
+                            </div>
+                        </div>                        
                 </div>
+                <!-- <strong style="color: orange;">W</strong>eb <strong style="color: orange;">S</strong>kill -->
 
                 <!-- Menu -->
                 <div id="navbar" class="navbar-collapse collapse">

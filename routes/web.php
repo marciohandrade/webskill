@@ -8,6 +8,10 @@ Route::get('/', function () {
 Route::post('/contato', [App\Http\Controllers\ContatoController::class, 'enviar'])
     ->name('contato.enviar');
 
+Route::get('/ofertas-agenda', function () {
+    return view('ofertas-agenda');
+});
+
 Route::prefix('portfolio')->group(function () {
     Route::get('/clinica', fn() => view('portfolio.clinica.home'))->name('portfolio.clinica');
     Route::get('/estetica', fn() => view('portfolio.estetica.home'))->name('portfolio.estetica');
@@ -25,3 +29,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::patch('/contatos/{contato}/respondido', [App\Http\Controllers\ContatoController::class, 'marcarRespondido'])->name('contatos.respondido');
     Route::patch('/contatos/{contato}/observacao', [App\Http\Controllers\ContatoController::class, 'adicionarObservacao'])->name('contatos.observacao');
 });
+
+// ========================================
+// TESTE FORMULÁRIO LIVEWIRE
+// ========================================
+Route::get('/ofertas-agenda', function () {
+    return view('ofertas-agenda'); // ✅ CORRETO
+});
+
+/* Route::get('/ofertas-agenda', function () {
+    return view('ofertas-agenda');
+}); */
