@@ -936,10 +936,7 @@
     <!-- FORM SECTION -->
     <section class="form-section" id="form">
         <div class="container">
-            <div class="form-container">
-                <div class="urgency-badge">
-                    ⏰ Restam apenas <span id="vagas-restantes">6</span> vagas da oferta de lançamento
-                </div>
+            <div class="form-container">                
                 <p><br><br></p>
                 <h2 class="form-title">Garantir Vaga da Oferta de Lançamento</h2>
                 <p class="form-subtitle">Preencha abaixo e eu entro em contato em até 2 horas para confirmar sua participação</p>
