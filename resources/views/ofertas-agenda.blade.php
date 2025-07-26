@@ -6,39 +6,39 @@
     <title>Web Skill - Sistema de Agendamento para Salões</title>
     @livewireStyles
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-        
+       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        /* RESET UNIVERSAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            }
+        }
 
-            html, body {
-                margin: 0;
-                padding: 0;
-                height: 100%;
-            }
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
 
-            body {
-                font-family: 'Inter', sans-serif;
-                line-height: 1.6;
-                color: #333;
-                overflow-x: hidden;
-            }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-            /* HEADER - CORRIGIDO */
-            .header {
-                background: #000;
-                padding: 20px 0;
-                box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-                position: fixed;
-                width: 100%;
-                top: 0;
-                left: 0;
-                z-index: 1000;
-            }
-
+        /* HEADER - FUNCIONA EM DESKTOP E MOBILE */
+        .header {
+            background: #000;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
 
         .container {
             max-width: 1200px;
@@ -93,13 +93,12 @@
             box-shadow: 0 8px 25px rgba(255,107,53,0.3);
         }
 
-        /* HERO SECTION */
-       .hero {
+        /* HERO SECTION - CORRIGIDO */
+        .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
             padding: 120px 0 100px;
             text-align: center;
             position: relative;
-            padding-top: 100px;
         }
 
         .hero::before {
@@ -281,14 +280,14 @@
             text-align: left;
             max-width: 600px;
         }
-        
+
         .value-item {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid rgba(255,107,53,0.2);
         }
-        
+
         .value-item:last-child {
             border-bottom: none;
             font-weight: 700;
@@ -637,31 +636,20 @@
             color: #666;
         }
 
-        /* RESPONSIVE */
+        /* RESPONSIVE - CORRIGIDO PARA MOBILE */
         @media (max-width: 768px) {
-            .test-mode {
-                font-size: 12px;
-                padding: 8px 0;
-            }
-            
-            .test-links {
-                margin-top: 3px;
-            }
-            
-            .test-link {
-                font-size: 10px;
-                padding: 3px 6px;
-                margin: 0 5px;
-            }
-            
+            /* Header fixo no topo */
             .header {
-                top: 50px;
+                padding: 15px 0;
+                top: 0;
             }
             
+            /* Hero com espaço correto */
             .hero {
-                padding-top: 170px;
+                padding-top: 100px;
             }
             
+            /* Ajustes de fontes e layout */
             .hero-title { font-size: 36px; }
             .hero-subtitle { font-size: 18px; }
             .section-title { font-size: 32px; }
