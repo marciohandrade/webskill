@@ -960,108 +960,7 @@
     @livewireScripts
     
     <script>
-        /* console.log('🚀 PÁGINA PRINCIPAL - Script carregando...'); */
-
-        // =================================================================
-        // 📱 FORMATAÇÃO DE TELEFONE (função principal)
-        // =================================================================
-        function formatPhoneNumber(input) {
-            // Remove todos os caracteres não numéricos
-            let value = input.value.replace(/\D/g, '');
-            
-            // Limita a 11 dígitos (DDD + 9 dígitos)
-            if (value.length > 11) {
-                value = value.substring(0, 11);
-            }
-            
-            // Aplica a formatação baseada no número de dígitos
-            if (value.length >= 11) {
-                // Formato: (11) 99999-9999
-                value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-            } else if (value.length >= 7) {
-                // Formato: (11) 9999-9999 ou (11) 99999-999
-                if (value.length === 10) {
-                    value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
-                } else {
-                    value = value.replace(/(\d{2})(\d{5})(\d+)/, '($1) $2-$3');
-                }
-            } else if (value.length >= 3) {
-                // Formato: (11) 9999
-                value = value.replace(/(\d{2})(\d+)/, '($1) $2');
-            } else if (value.length >= 1) {
-                // Formato: (1
-                value = value.replace(/(\d+)/, '($1');
-            }
-            
-            // Atualiza o valor do input
-            input.value = value;
-            
-            // Dispara evento para o Livewire capturar a mudança
-            input.dispatchEvent(new Event('input', { bubbles: true }));
-        }
-
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : evt.keyCode;
-            // Permite números (0-9), backspace (8), delete (46), tab (9), escape (27), enter (13)
-            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                return false;
-            }
-            return true;
-        }
-
-        // =================================================================
-        // 🍞 POPUP SUCCESS SYSTEM (versão simplificada - só botão fechar)
-        // =================================================================
-        (function() {
-            /* console.log('🔧 POPUP SYSTEM - Versão simplificada...'); */
-            
-            function closeSuccessPopup() {
-                /* console.log('🔧 Fechando popup...'); */
-                
-                const popup = document.getElementById('success-popup');
-                
-                if (!popup) {
-                    /* console.log('❌ ERRO: Popup não encontrado'); */
-                    return;
-                }
-                
-                // Animação de saída
-                popup.classList.add('closing');
-                /* console.log('✅ Classe closing adicionada'); */
-                
-                // Remover após animação
-                setTimeout(() => {
-                    if (popup && popup.parentNode) {
-                        popup.remove();
-                        /* console.log('✅ Popup removido do DOM'); */
-                    }
-                    
-                    // Limpar mensagem do Livewire
-                    if (typeof Livewire !== 'undefined' && Livewire.find) {
-                        try {
-                            const wireElement = document.querySelector('[wire\\:id]');
-                            if (wireElement) {
-                                const component = Livewire.find(wireElement.getAttribute('wire:id'));
-                                if (component) {
-                                    component.call('clearSuccess');
-                                    /* console.log('✅ Livewire clearSuccess chamado'); */
-                                }
-                            }
-                        } catch (e) {
-                            /* console.log('❌ Erro ao chamar Livewire:', e.message); */
-                        }
-                    }
-                }, 400);
-            }
-
-            // Expor função globalmente para os botões
-            window.closeSuccessPopup = closeSuccessPopup;            
-
-        })();
-
-        // =================================================================
-        // 📜 SMOOTH SCROLL (funcionalidade da página)
-        // =================================================================
+        // Smooth scroll para links âncora
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1075,12 +974,8 @@
             });
         });
 
-        // =================================================================
-        // 🎯 INTEGRAÇÃO LIVEWIRE (eventos e funcionalidades)
-        // =================================================================
-        /* document.addEventListener('livewire:init', () => {
-            console.log('🎯 LIVEWIRE - Inicializado');
-            
+        // INTEGRAÇÃO LIVEWIRE - FUNCIONALIDADE PRINCIPAL
+        document.addEventListener('livewire:init', () => {
             Livewire.on('lead-captured', (event) => {
                 console.log('🎉 Lead capturado com sucesso:', event);
                 
@@ -1102,11 +997,9 @@
                     });
                 }, 2000);
             });
-        }); */
+        });
 
-        // =================================================================
-        // 🎲 FUNCIONALIDADES EXTRAS (escassez, etc)
-        // =================================================================
+        // Simulação de escassez (opcional)
         function updateVagas() {
             const vagas = Math.floor(Math.random() * 4) + 3; // Entre 3-6 vagas
             const vagasElement = document.getElementById('vagas-restantes');
@@ -1115,26 +1008,64 @@
             }
         }
 
-        // Funcionalidade para paste no campo WhatsApp
-        document.addEventListener('DOMContentLoaded', function() {
-            /* console.log('🚀 DOM - Carregado completamente'); */
-            
-            const whatsappInput = document.getElementById('whatsapp-input');
-            if (whatsappInput) {
-                whatsappInput.addEventListener('paste', function(e) {
-                    setTimeout(() => {
-                        formatPhoneNumber(this);
-                    }, 10);
-                });
-                /* console.log('📱 WhatsApp input - Event listeners configurados'); */
-            }
-            
-            // Inicializar funções
-            updateVagas();
-        });
+        // Inicializar funções
+        updateVagas();
 
-        /* console.log('🚀 PÁGINA PRINCIPAL - Script finalizado'); */
+        function formatPhoneNumber(input) {
+        // Remove todos os caracteres não numéricos
+        let value = input.value.replace(/\D/g, '');
         
+        // Limita a 11 dígitos (DDD + 9 dígitos)
+        if (value.length > 11) {
+            value = value.substring(0, 11);
+        }
+        
+        // Aplica a formatação baseada no número de dígitos
+        if (value.length >= 11) {
+            // Formato: (11) 99999-9999
+            value = value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        } else if (value.length >= 7) {
+            // Formato: (11) 9999-9999 ou (11) 99999-999
+            if (value.length === 10) {
+                value = value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+            } else {
+                value = value.replace(/(\d{2})(\d{5})(\d+)/, '($1) $2-$3');
+            }
+        } else if (value.length >= 3) {
+            // Formato: (11) 9999
+            value = value.replace(/(\d{2})(\d+)/, '($1) $2');
+        } else if (value.length >= 1) {
+            // Formato: (1
+            value = value.replace(/(\d+)/, '($1');
+        }
+        
+        // Atualiza o valor do input
+        input.value = value;
+        
+        // Dispara evento para o Livewire capturar a mudança
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        // Permite números (0-9), backspace (8), delete (46), tab (9), escape (27), enter (13)
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
+    // Função para permitir apenas colagem de números
+    document.addEventListener('DOMContentLoaded', function() {
+        const whatsappInput = document.getElementById('whatsapp-input');
+        if (whatsappInput) {
+            whatsappInput.addEventListener('paste', function(e) {
+                setTimeout(() => {
+                    formatPhoneNumber(this);
+                }, 10);
+            });
+        }
+    });
     </script>
 </body>
 </html>
