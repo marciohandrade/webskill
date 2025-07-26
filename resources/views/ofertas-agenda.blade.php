@@ -680,6 +680,124 @@
                 font-size: 35px;
             }
         }
+
+        /* NOVA SEÇÃO PLANOS */
+        .plans-preview {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .plan-card.featured {
+            transform: scale(1.05);
+            border-color: #ff6b35;
+        }
+
+        .plan-card.featured::before {
+            content: "MAIS POPULAR";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff6b35;
+            color: white;
+            padding: 8px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-bottom: 5px;
+        }
+
+        .plan-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .plan-cta {
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .plan-cta:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .plan-cta.secondary {
+            background: transparent;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
+        }
+
+        .plan-cta.secondary:hover {
+            background: #ff6b35;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -784,6 +902,72 @@
             </div>
 
             <!-- Imagens implementadas nos mockups acima -->
+        </div>
+    </section>
+
+     <!-- NOVA SEÇÃO: PREVIEW DOS PLANOS -->
+    <section class="plans-preview">
+        <div class="container">
+            <div class="showcase-header">
+                <h2 class="showcase-title">Escolha o Plano Ideal Para Seu Negócio</h2>
+                <p class="showcase-subtitle">3 opções pensadas para diferentes necessidades e volumes de agendamento</p>
+            </div>
+            
+            <div class="plans-grid">
+                <!-- PLANO BÁSICO -->
+                <div class="plan-card">
+                    <div class="plan-name">BÁSICO</div>
+                    <div class="plan-price">R$ 97</div>
+                    <div class="plan-period">/mês</div>
+                    
+                    <ul class="plan-features">
+                        <li>Site profissional responsivo</li>
+                        <li>Agendamento online 24h</li>
+                        <li>E-mail + SMS automático</li>
+                        <li>Até 40 SMS/mês inclusos</li>
+                        <li>PIX manual</li>
+                        <li>Suporte por e-mail</li>
+                    </ul>
+                    
+                    <a href="#form" class="plan-cta secondary">Começar Agora</a>
+                </div>
+
+                <!-- PLANO PROFISSIONAL -->
+                <div class="plan-card featured">
+                    <div class="plan-name">PROFISSIONAL</div>
+                    <div class="plan-price">R$ 147</div>
+                    <div class="plan-period">/mês</div>
+                    
+                    <ul class="plan-features">
+                        <li>Tudo do Básico +</li>
+                        <li>SMS ilimitado</li>
+                        <li>Links de pagamento</li>
+                        <li>Relatórios avançados</li>
+                        <li>Até 5 profissionais</li>
+                        <li>Suporte WhatsApp</li>
+                    </ul>
+                    
+                    <a href="#form" class="plan-cta">Mais Popular</a>
+                </div>
+
+                <!-- PLANO PREMIUM -->
+                <div class="plan-card">
+                    <div class="plan-name">PREMIUM</div>
+                    <div class="plan-price">R$ 197</div>
+                    <div class="plan-period">/mês</div>
+                    
+                    <ul class="plan-features">
+                        <li>Tudo do Profissional +</li>
+                        <li>WhatsApp automático</li>
+                        <li>Cartão integrado</li>
+                        <li>Multi-unidades</li>
+                        <li>Convênios médicos</li>
+                        <li>Suporte prioritário</li>
+                    </ul>
+                    
+                    <a href="#form" class="plan-cta secondary">Escolher Premium</a>
+                </div>
+            </div>
         </div>
     </section>
 
