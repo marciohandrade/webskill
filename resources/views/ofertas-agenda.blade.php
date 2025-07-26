@@ -81,6 +81,7 @@
         .header-cta {
             background: #ff6b35;
             color: white;
+            text-align: center;
             padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
@@ -99,6 +100,7 @@
             padding: 120px 0 100px;
             text-align: center;
             position: relative;
+            margin-top: 50px;
         }
 
         .hero::before {
@@ -700,7 +702,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="badge">🚀 OFERTA DE LANÇAMENTO - Primeiros 10 Salões da Região</div>
+                <div class="badge">🚀 OFERTA DE LANÇAMENTO - Primeiros 10 Estabelecimentos da Região</div>
                 
                 <h1 class="hero-title">Sistema que <span class="highlight">Aumenta 40% os Agendamentos</span><br>Site Profissional + Agenda Online 24h</h1>
                 
@@ -708,17 +710,21 @@
                 
                 <br><br>
                 
+                <p><br></p>
+                <p><br></p>
                 <div class="price-highlight">
                     <div class="price-old">Preço oficial: R$297/mês</div>
                     <div class="price-new">R$97/mês</div>
                     <div class="price-period">Durante Um Ano</div>
                 </div>
-                
+                <p></p>
+                <p></p>
+                <!-- MUDANÇA 5: Garantia visível -->
                 <div class="guarantee-badge">
                     🛡️ GARANTIA 30 DIAS - Não aumentar agendamentos = 100% reembolso
                 </div>
-                
-                <br><br>
+                <p><br></p>
+                <p><br></p>               
                 
                 <div class="hero-actions">
                     <a href="#form" class="hero-cta">Garantir Minha Vaga Agora !</a>
@@ -817,7 +823,7 @@
                     <span><strong>R$ 6.600 + R$ 200/mês</strong></span>
                 </div>
                 <div class="value-item">
-                    <span><strong>SEU INVESTIMENTO TESTE BETA:</strong></span>
+                    <span><strong>SEU INVESTIMENTO HOJE:</strong></span>
                     <span><strong>R$ 97/mês</strong></span>
                 </div>
             </div>
@@ -934,7 +940,7 @@
                 <div class="urgency-badge">
                     ⏰ Restam apenas <span id="vagas-restantes">6</span> vagas da oferta de lançamento
                 </div>
-                
+                <p><br><br></p>
                 <h2 class="form-title">Garantir Vaga da Oferta de Lançamento</h2>
                 <p class="form-subtitle">Preencha abaixo e eu entro em contato em até 2 horas para confirmar sua participação</p>
                 
