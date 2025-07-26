@@ -12,27 +12,33 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
+            }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
-        }
+            html, body {
+                margin: 0;
+                padding: 0;
+                height: 100%;
+            }
 
+            body {
+                font-family: 'Inter', sans-serif;
+                line-height: 1.6;
+                color: #333;
+                overflow-x: hidden;
+            }
 
+            /* HEADER - CORRIGIDO */
+            .header {
+                background: #000;
+                padding: 20px 0;
+                box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 1000;
+            }
 
-        /* HEADER */
-        .header {
-            background: #000;
-            padding: 20px 0;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.3);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
 
         .container {
             max-width: 1200px;
@@ -88,11 +94,12 @@
         }
 
         /* HERO SECTION */
-        .hero {
+       .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
-            padding: 140px 0 100px;
+            padding: 120px 0 100px;
             text-align: center;
             position: relative;
+            padding-top: 100px;
         }
 
         .hero::before {
