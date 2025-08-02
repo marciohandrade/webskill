@@ -37,6 +37,10 @@ Route::get('/ofertas-agenda', function () {
     return view('ofertas-agenda'); // ✅ CORRETO
 });
 
+Route::get('/qualificacao-clientes', function () {
+    return view('qualificacao-clientes'); // ✅ CORRETO
+});
+
 /* Route::get('/ofertas-agenda', function () {
     return view('ofertas-agenda');
 }); */

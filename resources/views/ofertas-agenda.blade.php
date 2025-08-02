@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER - FUNCIONA EM DESKTOP E MOBILE */
+        /* HEADER */
         .header {
             background: #000;
             padding: 20px 0;
@@ -94,13 +94,13 @@
             box-shadow: 0 8px 25px rgba(255,107,53,0.3);
         }
 
-        /* HERO SECTION - CORRIGIDO */
+        /* HERO SECTION */
         .hero {
             background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%);
             padding: 120px 0 100px;
             text-align: center;
             position: relative;
-            margin-top: 50px;
+            margin-top: 80px;
         }
 
         .hero::before {
@@ -272,36 +272,6 @@
             gap: 0;
         }
 
-        /* VALUE STACK */
-        .value-stack {
-            background: rgba(255,107,53,0.05);
-            border: 2px solid #ff6b35;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px auto;
-            text-align: left;
-            max-width: 600px;
-        }
-
-        .value-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,107,53,0.2);
-        }
-
-        .value-item:last-child {
-            border-bottom: none;
-            font-weight: 700;
-            font-size: 18px;
-            color: #ff6b35;
-            background: #ff6b35;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-
         /* APP SHOWCASE SECTION */
         .app-showcase {
             padding: 100px 0;
@@ -436,6 +406,297 @@
             font-size: 16px;
             font-weight: 600;
             color: #333;
+        }
+
+        /* PLANOS SECTION */
+        .plans-preview {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 60px auto 0;
+            max-width: 800px;
+            align-items: start;
+        }
+
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b35;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .plan-card.featured {
+            border-color: #ff6b35;
+            transform: scale(1.08);
+            transform-origin: top center;
+        }
+
+        .plan-card.featured::before {
+            content: "MAIS POPULAR";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ff6b35;
+            color: white;
+            padding: 12px 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .plan-trial {
+            border: 3px solid #28a745;
+            position: relative;
+        }
+
+        .plan-trial::before {
+            content: "✨ TESTE GRÁTIS";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #28a745;
+            color: white;
+            padding: 12px 8px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .plan-name {
+            font-size: 24px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+
+        .plan-name.trial {
+            color: #28a745;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-bottom: 5px;
+        }
+
+        .plan-price.trial {
+            color: #28a745;
+        }
+
+        .plan-period {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .plan-features li {
+            padding: 8px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            color: #ff6b35;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .plan-cta {
+            background: #ff6b35;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .plan-cta:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .plan-cta.trial-btn {
+            background: #28a745;
+            border: none;
+        }
+
+        .trial-info {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .upgrade-info {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #fff;
+            background: rgba(255,107,53,0.8);
+            padding: 8px;
+            border-radius: 8px;
+        }
+
+        /* VALOR TRIAL SECTION */
+        .trial-value {
+            text-align: center;
+            margin-top: 200px;
+            padding: 30px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            border-radius: 20px;
+            color: white;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .trial-value h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .trial-value p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .trial-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        .trial-stat {
+            text-align: center;
+        }
+
+        .trial-stat-number {
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        .trial-stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* VALUE STACK SECTION */
+        .value-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .value-section h2 {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .value-section p {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .value-stack {
+            background: rgba(255,107,53,0.05);
+            border: 2px solid #ff6b35;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px auto;
+            text-align: left;
+            max-width: 600px;
+        }
+
+        .value-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,107,53,0.2);
+        }
+
+        .value-item:last-child {
+            border-bottom: none;
+            font-weight: 700;
+            font-size: 18px;
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .professional-migration {
+            text-align: center;
+            margin-top: 40px;
+            padding: 25px;
+            background: white;
+            border-radius: 15px;
+            border: 2px solid #ff6b35;
+        }
+
+        .professional-migration h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #ff6b35;
+            font-weight: 800;
+        }
+
+        .professional-migration p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .professional-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .professional-benefit {
+            color: #28a745;
+            font-weight: 600;
         }
 
         /* BENEFITS SECTION */
@@ -588,6 +849,108 @@
             color: #666;
         }
 
+        /* FOUNDER SECTION */
+        .founder {
+            background: #f8f9fa;
+            padding: 100px 0;
+        }
+
+        .founder-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .founder-image-container {
+            text-align: center;
+        }
+
+        .founder-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+            margin: 0 auto 20px;
+            box-shadow: 0 20px 60px rgba(255,107,53,0.2);
+            position: relative;
+            border: 4px solid #ff6b35;
+            overflow: hidden;
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .founder-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .founder-content h3 {
+            font-size: 36px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .founder-content .highlight {
+            color: #ff6b35;
+        }
+
+        .founder-text {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .founder-credentials {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border-left: 4px solid #ff6b35;
+        }
+
+        .credentials-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+        }
+
+        .credentials-list {
+            list-style: none;
+        }
+
+        .credentials-list li {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .credentials-list li::before {
+            content: "✓";
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
         /* FORM SECTION */
         .form-section {
             background: #000;
@@ -630,6 +993,41 @@
             50% { transform: scale(1.05); }
         }
 
+        /* FORM DEMO */
+        .form-demo {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .form-demo input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .form-demo button {
+            width: 100%;
+            padding: 18px;
+            background: #ff6b35;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-demo button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
         /* FOOTER */
         .footer {
             background: #f8f9fa;
@@ -638,166 +1036,325 @@
             color: #666;
         }
 
-        /* RESPONSIVE - CORRIGIDO PARA MOBILE */
+        /* RESPONSIVE - CORRIGIDO E MELHORADO */
         @media (max-width: 768px) {
-            /* Header fixo no topo */
+            /* Header */
             .header {
                 padding: 15px 0;
-                top: 0;
             }
             
-            /* Hero com espaço correto */
+            .logo-main { 
+                font-size: 24px; 
+            }
+            
+            .logo-tagline { 
+                font-size: 9px; 
+            }
+            
+            .header-cta {
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+            
+            /* Hero */
             .hero {
-                padding-top: 100px;
+                padding: 100px 0 80px;
+                margin-top: 70px;
             }
             
-            /* Ajustes de fontes e layout */
-            .hero-title { font-size: 36px; }
-            .hero-subtitle { font-size: 18px; }
-            .section-title { font-size: 32px; }
-            .stats-container { gap: 40px; }
-            .benefits-grid { grid-template-columns: 1fr; }
-            .devices-container { flex-direction: column; gap: 40px; }
-            .desktop-frame { width: 100%; max-width: 400px; height: 250px; }
-            .mobile-frame { width: 250px; height: 450px; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .logo-main { font-size: 28px; }
-            .logo-tagline { font-size: 10px; }
-            .badge { 
-                padding: 14px 28px; 
-                font-size: 15px;
-                margin-bottom: 35px;
+            .hero-title { 
+                font-size: 32px;
+                line-height: 1.2;
             }
-            .hero-cta {
-                padding: 20px 45px;
+            
+            .hero-subtitle { 
                 font-size: 18px;
-                margin-bottom: 35px;
+                margin-bottom: 30px;
             }
+            
+            .badge { 
+                padding: 12px 24px; 
+                font-size: 14px;
+                margin-bottom: 30px;
+            }
+            
+            .price-highlight {
+                padding: 15px 25px;
+                margin-bottom: 30px;
+            }
+            
+            .price-new {
+                font-size: 28px;
+            }
+            
+            .hero-cta {
+                padding: 18px 40px;
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            
             .hero-cta-secondary {
+                font-size: 18px;
+            }
+            
+            .arrow-down {
+                font-size: 30px;
+            }
+            
+            /* App Showcase */
+            .app-showcase {
+                padding: 60px 0;
+            }
+            
+            .showcase-title { 
+                font-size: 28px; 
+            }
+            
+            .showcase-subtitle {
+                font-size: 16px;
+            }
+            
+            .devices-container { 
+                flex-direction: column; 
+                gap: 40px; 
+            }
+            
+            .desktop-frame { 
+                width: 100%; 
+                max-width: 350px; 
+                height: 220px; 
+            }
+            
+            .mobile-frame { 
+                width: 220px; 
+                height: 400px; 
+            }
+            
+            /* Planos */
+            .plans-preview {
+                padding: 60px 0;
+            }
+            
+            .plans-grid { 
+                grid-template-columns: 1fr;
+                max-width: 350px;
+                gap: 20px;
+            }
+            
+            .plan-card.featured {
+                transform: scale(1);
+            }
+            
+            .plan-card {
+                padding: 30px 20px;
+            }
+            
+            .plan-price {
+                font-size: 40px;
+            }
+            
+            /* Trial Value */
+            .trial-value {
+                margin-top: 40px;
+                padding: 25px 20px;
+                max-width: 95%;
+            }
+            
+            .trial-value h3 {
                 font-size: 20px;
             }
-            .arrow-down {
-                font-size: 35px;
+            
+            .trial-value p {
+                font-size: 16px;
+            }
+            
+            .trial-stats { 
+                gap: 20px;
+                flex-direction: column;
+            }
+            
+            .trial-stat-number {
+                font-size: 28px;
+            }
+            
+            /* Value Section */
+            .value-section {
+                padding: 60px 0;
+            }
+            
+            .value-section h2 {
+                font-size: 28px;
+            }
+            
+            .value-section p {
+                font-size: 16px;
+            }
+            
+            .value-stack {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .professional-migration {
+                margin: 30px 10px 0;
+                padding: 20px;
+            }
+            
+            .professional-benefits {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            /* Benefits */
+            .benefits {
+                padding: 60px 0;
+            }
+            
+            .section-title { 
+                font-size: 28px; 
+            }
+            
+            .section-subtitle {
+                font-size: 16px;
+            }
+            
+            .benefits-grid { 
+                grid-template-columns: 1fr;
+                gap: 30px;
+                margin-top: 40px;
+            }
+            
+            .benefit-card {
+                padding: 30px 20px;
+            }
+            
+            .benefit-icon {
+                font-size: 40px;
+            }
+            
+            .benefit-title {
+                font-size: 20px;
+            }
+            
+            /* Social Proof */
+            .social-proof {
+                padding: 60px 0;
+            }
+            
+            .stats-container { 
+                gap: 40px;
+                flex-direction: column;
+            }
+            
+            .stat-number {
+                font-size: 36px;
+            }
+            
+            .testimonials-grid { 
+                grid-template-columns: 1fr;
+                margin-top: 40px;
+            }
+            
+            .testimonial {
+                padding: 25px;
+            }
+            
+            /* Founder */
+            .founder {
+                padding: 60px 0;
+            }
+            
+            .founder-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .founder-image {
+                width: 200px;
+                height: 200px;
+                margin: 0 auto 15px;
+            }
+            
+            .founder-content h3 {
+                font-size: 28px;
+            }
+            
+            .founder-text {
+                font-size: 16px;
+            }
+            
+            .founder-credentials {
+                padding: 20px;
+            }
+            
+            /* Form */
+            .form-section {
+                padding: 60px 0;
+            }
+            
+            .form-title {
+                font-size: 28px;
+            }
+            
+            .form-subtitle {
+                font-size: 16px;
+            }
+            
+            .urgency-badge {
+                padding: 10px 20px;
+                font-size: 12px;
+                text-align: center;
+                line-height: 1.4;
+            }
+            
+            .form-demo {
+                padding: 20px;
+            }
+            
+            .form-demo input {
+                padding: 12px;
+                font-size: 16px;
+            }
+            
+            .form-demo button {
+                padding: 15px;
+                font-size: 16px;
             }
         }
 
-        /* NOVA SEÇÃO PLANOS */
-        .plans-preview {
-            padding: 80px 0;
-            background: #f8f9fa;
+        /* TABLET RESPONSIVO (768px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .showcase-title, .section-title {
+                font-size: 36px;
+            }
+            
+            .plans-grid {
+                max-width: 700px;
+            }
+            
+            .trial-value {
+                max-width: 90%;
+            }
+            
+            .founder-container {
+                gap: 40px;
+            }
+            
+            .founder-image {
+                width: 250px;
+                height: 250px;
+            }
         }
 
-        .plans-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
-        }
-
-        .plan-card {
-            background: white;
-            border-radius: 20px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .plan-card:hover {
-            transform: translateY(-10px);
-            border-color: #ff6b35;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-        }
-
-        .plan-card.featured {
-            transform: scale(1.05);
-            border-color: #ff6b35;
-        }
-
-        .plan-card.featured::before {
-            content: "MAIS POPULAR";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: #ff6b35;
-            color: white;
-            padding: 8px;
-            font-size: 12px;
-            font-weight: 700;
-        }
-
-        .plan-name {
-            font-size: 24px;
-            font-weight: 800;
-            color: #000;
-            margin-bottom: 10px;
-        }
-
-        .plan-price {
-            font-size: 48px;
-            font-weight: 800;
-            color: #ff6b35;
-            margin-bottom: 5px;
-        }
-
-        .plan-period {
-            font-size: 14px;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .plan-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .plan-features li {
-            padding: 8px 0;
-            color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 10px;
-        }
-
-        .plan-features li::before {
-            content: "✓";
-            color: #ff6b35;
-            font-weight: 700;
-            font-size: 16px;
-        }
-
-        .plan-cta {
-            background: #ff6b35;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            display: inline-block;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .plan-cta:hover {
-            background: #e55a2b;
-            transform: translateY(-2px);
-        }
-
-        .plan-cta.secondary {
-            background: transparent;
-            color: #ff6b35;
-            border: 2px solid #ff6b35;
-        }
-
-        .plan-cta.secondary:hover {
-            background: #ff6b35;
-            color: white;
-        }
     </style>
 </head>
 <body>
@@ -822,9 +1379,11 @@
             <div class="hero-content">
                 <div class="badge">🚀 OFERTA DE LANÇAMENTO - Primeiros 10 Estabelecimentos da Região</div>
                 
-                <h1 class="hero-title">Sistema que <span class="highlight">Aumenta 40% os Agendamentos</span><br>Site Profissional + Agenda Online 24h</h1>
+                <h1 class="hero-title">Teste <span class="highlight">Grátis 15 Dias</span><br><br>
+                            Sistema que 
+                        <span class="highlight">Aumenta 40% os Agendamentos</span><br>Site Profissional + Agenda Online 24h</h1>
                 
-                <p class="hero-subtitle">Elimine conflitos de horário, reduza 80% dos no-shows e tenha uma agenda sempre cheia</p>
+                <p class="hero-subtitle">Elimine furos na agenda, reduza 80% das faltas e fature mais todo mês</p>
                 
                 <br><br>
                 
@@ -839,7 +1398,7 @@
                 <p></p>
                 <!-- MUDANÇA 5: Garantia visível -->
                 <div class="guarantee-badge">
-                    🛡️ GARANTIA 30 DIAS - Não aumentar agendamentos = 100% reembolso
+                     🛡️ TRIAL GRÁTIS - Sem cartão de crédito • Cancele quando quiser
                 </div>
                 <p><br></p>
                 <p><br></p>               
@@ -906,77 +1465,102 @@
     </section>
 
      <!-- NOVA SEÇÃO: PREVIEW DOS PLANOS -->
-    <section class="plans-preview">
+    <section class="plans-preview" id="plans">
         <div class="container">
             <div class="showcase-header">
-                <h2 class="showcase-title">Escolha o Plano Ideal Para Seu Negócio</h2>
-                <p class="showcase-subtitle">3 opções pensadas para diferentes necessidades e volumes de agendamento</p>
+                <h2 class="showcase-title">Teste Grátis e Comprove os Resultados</h2>
+                <p class="showcase-subtitle">Comece sem compromisso e migre quando ver o aumento dos agendamentos</p>
             </div>
             
             <div class="plans-grid">
-                <!-- PLANO BÁSICO -->
-                <div class="plan-card">
-                    <div class="plan-name">BÁSICO</div>
-                    <div class="plan-price">R$ 97</div>
-                    <div class="plan-period">/mês</div>
+                <!-- PLANO TRIAL -->
+                <div class="plan-card plan-trial">
+                    <div class="plan-name trial">TESTE GRÁTIS</div>
+                    <div class="plan-price trial">R$ 0</div>
+                    <div class="plan-period">15 dias grátis</div>
                     
                     <ul class="plan-features">
-                        <li>Site profissional responsivo</li>
-                        <li>Agendamento online 24h</li>
-                        <li>E-mail + SMS automático</li>
-                        <li>Até 40 SMS/mês inclusos</li>
-                        <li>PIX manual</li>
-                        <li>Suporte por e-mail</li>
+                        <li>🌐 Site profissional responsivo</li>
+                        <li>📅 Agendamento online 24h</li>
+                        <li>💬 WhatsApp + SMS automático</li>
+                        <li>📊 Relatórios completos</li>
+                        <li>⚡ Configuração em 7 dias</li>
+                        <li>🛡️ Suporte técnico incluso</li>
+                        <li style="color: #666; font-size: 13px;">Limite: 50 agendamentos/mês</li>
                     </ul>
                     
-                    <a href="#form" class="plan-cta secondary">Começar Agora</a>
+                    <a href="#form" class="plan-cta trial-btn">Começar Teste Grátis</a>
+                    <div class="trial-info">
+                        ✅ Sem cartão de crédito<br>
+                        ✅ Cancele quando quiser
+                    </div>
                 </div>
 
                 <!-- PLANO PROFISSIONAL -->
                 <div class="plan-card featured">
-                    <div class="plan-name">PROFISSIONAL</div>
+                    <div class="plan-name">PROFESSIONAL</div>
                     <div class="plan-price">R$ 147</div>
                     <div class="plan-period">/mês</div>
                     
                     <ul class="plan-features">
-                        <li>Tudo do Básico +</li>
-                        <li>SMS ilimitado</li>
-                        <li>Links de pagamento</li>
-                        <li>Relatórios avançados</li>
-                        <li>Até 5 profissionais</li>
-                        <li>Suporte WhatsApp</li>
+                        <li>🚀 Tudo do Trial sem limites</li>
+                        <li>💬 SMS + WhatsApp ilimitado</li>
+                        <li>📈 Relatórios avançados</li>
+                        <li>👥 Até 10 profissionais</li>
+                        <li>📞 Suporte WhatsApp prioritário</li>
+                        <li>🎯 Remarketing automático</li>
+                        <li>📋 Lista de espera inteligente</li>
+                        <li>🔄 Backup automático</li>
                     </ul>
                     
-                    <a href="#form" class="plan-cta">Mais Popular</a>
+                    <a href="#form" class="plan-cta">Upgradar Agora</a>
+                    <div class="upgrade-info">
+                        💎 95% dos clientes upgrade após o trial
+                    </div>
                 </div>
+            </div>
 
-                <!-- PLANO PREMIUM -->
-                <div class="plan-card">
-                    <div class="plan-name">PREMIUM</div>
-                    <div class="plan-price">R$ 197</div>
-                    <div class="plan-period">/mês</div>
-                    
-                    <ul class="plan-features">
-                        <li>Tudo do Profissional +</li>
-                        <li>WhatsApp automático</li>
-                        <li>Cartão integrado</li>
-                        <li>Multi-unidades</li>
-                        <li>Convênios médicos</li>
-                        <li>Suporte prioritário</li>
-                    </ul>
-                    
-                    <a href="#form" class="plan-cta secondary">Escolher Premium</a>
+            <!-- VALOR TRIAL -->
+            <div class="trial-value">
+                <h3>🎯 Por Que Oferecemos Trial Gratuito?</h3>
+                <p>
+                    Porque sabemos que <strong>em 7 dias você vai ver</strong> sua agenda mais organizada, 
+                    <strong>em 15 dias</strong> terá 40% mais agendamentos confirmados!
+                </p>
+                <div class="trial-stats">
+                    <div class="trial-stat">
+                        <div class="trial-stat-number">7 dias</div>
+                        <div class="trial-stat-label">Para configuração</div>
+                    </div>
+                    <div class="trial-stat">
+                        <div class="trial-stat-number">+40%</div>
+                        <div class="trial-stat-label">Agendamentos em 15 dias</div>
+                    </div>
+                    <div class="trial-stat">
+                        <div class="trial-stat-number">95%</div>
+                        <div class="trial-stat-label">Upgrade para Professional</div>
+                    </div>
                 </div>
+                <br>
+                <p>
+                    <h2>Sem Cartão De Crédito</h2>
+                </p>
+                <p>
+                    <h2>Cancele Quando Quiser</h2>                    
+                </p>
+                
             </div>
         </div>
     </section>
 
     <!-- VALUE STACK -->
-    <section style="background: #f8f9fa; padding: 80px 0;">
+    <!-- <section style="background: #f8f9fa; padding: 80px 0;"> -->
+    <section class="value-section">
         <div class="container">
             <h2 style="text-align: center; font-size: 42px; font-weight: 700; margin-bottom: 40px; color: #000;">
-                Tudo Que Você Recebe Por R$ 97/mês
+                Tudo Que Você Recebe Grátis no Trial
             </h2>
+            <p>Teste por 15 dias sem compromisso e comprove o aumento de agendamentos</p>
             <div class="value-stack">
                 <div class="value-item">
                     <span>✅ Site profissional responsivo</span>
@@ -1007,8 +1591,43 @@
                     <span><strong>R$ 6.600 + R$ 200/mês</strong></span>
                 </div>
                 <div class="value-item">
-                    <span><strong>SEU INVESTIMENTO HOJE:</strong></span>
-                    <span><strong>R$ 97/mês</strong></span>
+                    <span><strong>SEU INVESTIMENTO TRIAL:</strong></span>
+                    <span><strong>R$ 0,00</strong></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOUNDER SECTION - MANTIDO IGUAL -->
+    <section class="founder">
+        <div class="container">
+            <div class="founder-container">
+                <div class="founder-image-container">
+                    <div class="founder-image">
+                        <img src="{{url('outros/img/Marcio-Foto-Perfil-WebSkill-1.png')}}" alt="Seu Nome" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+                        
+                    </div>
+                    <div class="founder-badge">Founder & CEO</div>
+                </div>
+                
+                <div class="founder-content">
+                    <h3>Oi, eu sou <span class="highlight">Marcio Holanda</span></h3>
+                   <p class="founder-text">
+                        Há mais de 26 anos desenvolvendo soluções tecnológicas em Empresas Nacionais e Multinacionais, nos últimos anos dediquei toda essa experiência à <strong>Web Skill</strong> - ajudando pequenos negócios a eliminar tarefas chatas e focar no que realmente importa: seus clientes.
+                        <p>O WS-agenda nasceu da necessidade real: liberar você das tarefas administrativas chatas (como controlar agendamentos) e permitir que foque 100% no que realmente importa - seus clientes!</p>
+                        <br>
+                        Porque sua energia deve estar no atendimento, na qualidade do serviço ou no crescimento do negócio... não na planilha! 🚀💼📅
+                    </p><br><br>
+                    
+                    <div class="founder-credentials">
+                        <div class="credentials-title">Por que confiar em mim:</div>
+                        <ul class="credentials-list">
+                            <li> 20+ Estabelecimentos transformados com sucesso</li>
+                            <li>Desenvolvedor certificado em sistemas web</li>
+                            <li>Especialista em automação para pequenos negócios</li>
+                            <li>Suporte pessoal em todos os projetos</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1087,7 +1706,7 @@
                         <div class="author-avatar">MS</div>
                         <div class="author-info">
                             <div class="author-name">Marina Santos</div>
-                            <div class="author-business">Salão Elegance - São Paulo</div>
+                            <div class="author-business">Consultório Odontologico - São Paulo</div>
                         </div>
                     </div>
                 </div>
@@ -1122,8 +1741,8 @@
         <div class="container">
             <div class="form-container">                
                 <p><br><br></p>
-                <h2 class="form-title">Garantir Vaga da Oferta de Lançamento</h2>
-                <p class="form-subtitle">Preencha abaixo e eu entro em contato em até 2 horas para confirmar sua participação</p>
+                  <h2 class="form-title">Começar Trial Gratuito de <br>15 Dias</h2>
+                <p class="form-subtitle">Preencha abaixo e eu entro em contato em até 2 horas <br> para confirmar sua participação</p>
                 
                 <!-- COMPONENTE LIVEWIRE FUNCIONANDO -->
                 @livewire('landing-oferta-form')
