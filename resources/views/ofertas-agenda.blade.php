@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Skill - Sistema de Agendamento para Salões</title>
+    <link rel="icon" type="image/png" href="{{url('outros/img/faviconWS.png')}}">
     @livewireStyles
     <style>
        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
@@ -1482,7 +1483,7 @@
                     <ul class="plan-features">
                         <li>🌐 Site profissional responsivo</li>
                         <li>📅 Agendamento online 24h</li>
-                        <li>💬 WhatsApp + SMS automático</li>
+                        <li>💬 SMS automático</li>
                         <li>📊 Relatórios completos</li>
                         <li>⚡ Configuração em 7 dias</li>
                         <li>🛡️ Suporte técnico incluso</li>
@@ -1499,7 +1500,7 @@
                 <!-- PLANO PROFISSIONAL -->
                 <div class="plan-card featured">
                     <div class="plan-name">PROFESSIONAL</div>
-                    <div class="plan-price">R$ 147</div>
+                    <div class="plan-price">R$ 97</div>
                     <div class="plan-period">/mês</div>
                     
                     <ul class="plan-features">

@@ -963,7 +963,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="success-badge">✅ WhatsApp Confirmado com Sucesso!</div>
+                <div class="success-badge">✅ SMS Confirmado com Sucesso!</div>
                 
                 <h1 class="hero-title">Vamos <span class="highlight">Personalizar</span><br>Sua Demonstração</h1>
                 
