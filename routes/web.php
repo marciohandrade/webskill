@@ -32,7 +32,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 // ========================================
 // TESTE FORMULÁRIO LIVEWIRE
-// ========================================
+// =================================147=======
 Route::get('/ofertas-agenda', function () {
     return view('ofertas-agenda'); // ✅ CORRETO
 });
@@ -40,11 +40,6 @@ Route::get('/ofertas-agenda', function () {
 Route::get('/qualificacao-clientes', function () {
     return view('qualificacao-clientes'); // ✅ CORRETO
 });
-
-Route::get('/template-barbearia', function () {
-    return view('portfolio.barbearia.template-barbearia');
-})->name('template.barbearia');
-
 
 Route::get('/template-barbearia-gentleman', function () {
     return view('portfolio.barbearia.template-barbearia-gentleman');
