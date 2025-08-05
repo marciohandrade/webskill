@@ -7,27 +7,21 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Models\Contato;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\ContatoRequest;
 
 class ContatoController extends Controller
 {
-    public function enviar(Request $request)
+    public function enviar(ContatoRequest $request)
     {
-        // Validação dos dados
-        $validatedData = $request->validate([
-            'nome' => 'required|string|min:2|max:100',
-            'email' => 'required|email|max:255',
-            'tel' => 'nullable|string|max:20',
-            'assunto' => 'nullable|string|max:80',
-            'mensagem' => 'required|string|min:5|max:1000',
-        ], [
-            'nome.required' => 'O nome é obrigatório.',
-            'nome.min' => 'O nome deve ter pelo menos 2 caracteres.',
-            'nome.max' => 'O nome não pode ter mais de 100 caracteres.',
-            'email.required' => 'O e-mail é obrigatório.',
-            'email.email' => 'Por favor, informe um e-mail válido.',
-            'mensagem.required' => 'A mensagem é obrigatória.',
-            'mensagem.min' => 'A mensagem deve ter pelo menos 5 caracteres.',
-            'mensagem.max' => 'A mensagem não pode ter mais de 1000 caracteres.',
+        // Os dados já vêm validados pelo ContatoRequest
+        $validatedData = $request->validated();
+        
+        // Log da tentativa para monitoramento
+        Log::info('Nova tentativa de contato', [
+            'ip' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'nome' => $validatedData['nome'],
+            'email' => $validatedData['email']
         ]);
 
         // Usar transação para garantir consistência
@@ -43,6 +37,7 @@ class ContatoController extends Controller
                 'mensagem' => $validatedData['mensagem'],
                 'ip_address' => $request->ip(),
                 'user_agent' => $request->userAgent(),
+                'tipo_lead' => 'contato_geral' // Para diferenciar dos spams
             ]);
 
             // 2. Preparar dados para o email
@@ -50,18 +45,19 @@ class ContatoController extends Controller
                 'id' => $contato->id,
                 'nome' => $contato->nome,
                 'email' => $contato->email,
-                'telefone' => $contato->telefone_formatado,
-                'assunto' => $contato->assunto_formatado,
+                'telefone' => $contato->telefone_formatado ?? $contato->telefone,
+                'assunto' => $contato->assunto_formatado ?? $contato->assunto,
                 'mensagem' => $contato->mensagem,
-                'data_envio' => $contato->data_formatada,
+                'data_envio' => $contato->data_formatada ?? $contato->created_at->format('d/m/Y H:i'),
+                'ip_address' => $contato->ip_address,
             ];
 
             // 3. Enviar email
             $emailDestino = 'contato@webskill.com.br'; // Seu email real
-            
+
             Mail::send('emails.contato', $dadosEmail, function ($message) use ($dadosEmail, $emailDestino) {
                 $message->to($emailDestino)
-                        ->subject('Novo Contato #' . $dadosEmail['id'] . ' - ' . $dadosEmail['assunto'])
+                        ->subject('✅ Contato Verificado #' . $dadosEmail['id'] . ' - ' . $dadosEmail['assunto'])
                         ->replyTo($dadosEmail['email'], $dadosEmail['nome']);
             });
 
@@ -69,19 +65,42 @@ class ContatoController extends Controller
             $contato->update(['email_enviado' => true]);
 
             // 5. Log de sucesso
-            Log::info('Contato salvo e email enviado', [
+            Log::info('✅ Contato legítimo salvo e email enviado', [
                 'contato_id' => $contato->id,
                 'nome' => $contato->nome,
-                'email' => $contato->email
+                'email' => $contato->email,
+                'ip' => $request->ip()
             ]);
 
             // Confirmar transação
             DB::commit();
 
-            // Retorna com mensagem de sucesso
-            return redirect()->back()->with('success', 
+            // Resposta diferente para AJAX vs navegação normal
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Mensagem enviada com sucesso!',
+                    'protocolo' => '#' . $contato->id
+                ]);
+            }
+
+            // Fallback para navegação normal (se JS estiver desabilitado)
+            return redirect()->back()->with('success',
                 'Mensagem enviada com sucesso! Entraremos em contato em breve. Protocolo: #' . $contato->id
             );
+
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // Erros de validação para AJAX
+            DB::rollback();
+            
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'errors' => $e->errors()
+                ], 422);
+            }
+            
+            return redirect()->back()->withErrors($e->errors())->withInput();
 
         } catch (\Exception $e) {
             // Reverter transação em caso de erro
@@ -99,13 +118,22 @@ class ContatoController extends Controller
             // Log do erro
             Log::error('Erro ao processar contato: ' . $e->getMessage(), [
                 'dados' => $validatedData,
+                'ip' => $request->ip(),
                 'erro_completo' => $e->getTraceAsString()
             ]);
 
-            // Retorna com mensagem de erro
+            // Resposta para AJAX
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.'
+                ], 500);
+            }
+
+            // Fallback para navegação normal
             return redirect()->back()
-                           ->with('error', 'Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.')
-                           ->withInput();
+                        ->with('error', 'Erro ao enviar mensagem. Tente novamente ou entre em contato pelo WhatsApp.')
+                        ->withInput();
         }
     }
 

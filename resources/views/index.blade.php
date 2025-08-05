@@ -645,8 +645,14 @@
 
                         <!-- Formulário de Contato -->
                         <div class="col-lg-10 col-xl-8 mx-auto">
-                            <form action="{{ route('contato.enviar') }}" method="POST">
+                            <form action="{{ route('contato.enviar') }}" method="POST" id="contatoForm">
                                 @csrf
+                                
+                                <!-- Campo honeypot (invisível para usuários, visível para bots) -->
+                                <input type="text" name="honeypot" style="display:none !important;" tabindex="-1" autocomplete="off">
+                                
+                                <!-- Campo de tempo de início (proteção contra envio muito rápido) -->
+                                <input type="hidden" name="start_time" value="{{ time() }}">
                                 
                                 <!-- Texto explicativo -->
                                 <p class="text-muted mb-4">
@@ -658,7 +664,18 @@
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label>Nome completo <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" name="nome" placeholder="Informe seu nome completo" required>
+                                            <input type="text" 
+                                                class="form-control @error('nome') is-invalid @enderror" 
+                                                name="nome" 
+                                                value="{{ old('nome') }}"
+                                                placeholder="Informe seu nome completo" 
+                                                required
+                                                maxlength="100"
+                                                pattern="[a-zA-ZÀ-ÿ\s]+"
+                                                title="Use apenas letras">
+                                            @error('nome')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -668,13 +685,32 @@
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label>E-mail <span class="text-danger">*</span></label>
-                                            <input type="email" class="form-control" name="email" placeholder="seu@email.com" required>
+                                            <input type="email" 
+                                                class="form-control @error('email') is-invalid @enderror" 
+                                                name="email" 
+                                                value="{{ old('email') }}"
+                                                placeholder="seu@email.com" 
+                                                required
+                                                maxlength="255">
+                                            @error('email')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group mb-3">
                                             <label>Telefone</label>
-                                            <input type="text" class="form-control" name="tel" placeholder="(11) 99999-9999">
+                                            <input type="tel" 
+                                                class="form-control @error('tel') is-invalid @enderror" 
+                                                name="tel" 
+                                                value="{{ old('tel') }}"
+                                                placeholder="(11) 99999-9999"
+                                                maxlength="20"
+                                                pattern="(\(?\d{2}\)?\s?)?\d{4,5}[-\s]?\d{4}"
+                                                title="Use formato brasileiro: (11) 99999-9999">
+                                            @error('tel')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -684,7 +720,15 @@
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label>Assunto</label>
-                                            <input type="text" class="form-control" name="assunto" placeholder="Informe o assunto do contato">
+                                            <input type="text" 
+                                                class="form-control @error('assunto') is-invalid @enderror" 
+                                                name="assunto" 
+                                                value="{{ old('assunto') }}"
+                                                placeholder="Informe o assunto do contato"
+                                                maxlength="80">
+                                            @error('assunto')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -694,7 +738,17 @@
                                     <div class="col-md-12">
                                         <div class="form-group mb-3">
                                             <label>Mensagem <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="mensagem" rows="5" placeholder="Descreva sua solicitação com detalhes..." required></textarea>
+                                            <textarea class="form-control @error('mensagem') is-invalid @enderror" 
+                                                    name="mensagem" 
+                                                    rows="5" 
+                                                    placeholder="Descreva sua solicitação com detalhes..." 
+                                                    required
+                                                    minlength="10"
+                                                    maxlength="1000">{{ old('mensagem') }}</textarea>
+                                            @error('mensagem')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            <div class="form-text">Mínimo 10 caracteres, máximo 1000.</div>
                                         </div>
                                     </div>
                                 </div>
@@ -702,10 +756,16 @@
                                 <!-- Botão de envio -->
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn btn-primary btn-lg">
+                                        <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
                                             <i class="fa fa-paper-plane me-2"></i>
                                             Enviar Mensagem
                                         </button>
+                                        <div class="form-text mt-2">
+                                            <small class="text-muted">
+                                                <i class="fa fa-shield-alt me-1"></i>
+                                                Formulário protegido contra spam
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
@@ -830,6 +890,304 @@
     <script src="{{url('outros/js/isotope-custom.js')}}" ></script>
     <!-- <script  src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> -->
 
+<script>
+    // ===== AJAX FORMULÁRIO DE CONTATO - WEB SKILL =====
+    $(document).ready(function() {
+    console.log('🚀 INICIANDO SCRIPT AJAX...');
+    console.log('jQuery versão:', $.fn.jquery);
+    console.log('Formulário encontrado:', $('#contatoForm').length > 0);
+    console.log('Modal encontrado:', $('#modalcontato').length > 0);
+    
+    let formLoadTime = Date.now();
+    
+    // REMOVER QUALQUER EVENT LISTENER ANTERIOR
+    $('#contatoForm').off('submit');
+    
+    // Configurar CSRF para todas requisições AJAX
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    // ===== MÁSCARA E VALIDAÇÃO DO TELEFONE =====
+    const telInput = $('input[name="tel"]');
+    console.log('Campo telefone encontrado:', telInput.length > 0);
+    
+    if (telInput.length) {
+        telInput.on('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            
+            // Limitar a 11 dígitos
+            if (value.length > 11) {
+                value = value.substring(0, 11);
+            }
+            
+            // Aplicar máscara brasileira
+            if (value.length <= 2) {
+                value = value.replace(/(\d{0,2})/, '($1');
+            } else if (value.length <= 6) {
+                value = value.replace(/(\d{2})(\d{0,4})/, '($1) $2');
+            } else if (value.length <= 10) {
+                value = value.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+            } else {
+                value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+            }
+            
+            e.target.value = value;
+            
+            // Validação visual em tempo real
+            const digitsOnly = value.replace(/\D/g, '');
+            $(this).removeClass('is-invalid is-valid');
+            
+            if (digitsOnly.length === 0) {
+                $(this).css('border-color', '#ced4da');
+            } else if (digitsOnly.length >= 10 && digitsOnly.length <= 11) {
+                $(this).addClass('is-valid').css('border-color', '#28a745');
+            } else {
+                $(this).addClass('is-invalid').css('border-color', '#dc3545');
+            }
+        });
+    }
+
+    // ===== VALIDAÇÃO TEMPO REAL OUTROS CAMPOS =====
+    $('input[name="nome"]').on('input', function() {
+        const value = $(this).val();
+        const isValid = /^[a-zA-ZÀ-ÿ\s]{2,100}$/.test(value);
+        
+        $(this).removeClass('is-invalid is-valid');
+        if (value.length > 0) {
+            $(this).addClass(isValid ? 'is-valid' : 'is-invalid');
+        }
+    });
+
+    $('input[name="email"]').on('input', function() {
+        const value = $(this).val();
+        const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        
+        $(this).removeClass('is-invalid is-valid');
+        if (value.length > 0) {
+            $(this).addClass(isValid ? 'is-valid' : 'is-invalid');
+        }
+    });
+
+    $('textarea[name="mensagem"]').on('input', function() {
+        const value = $(this).val();
+        const isValid = value.length >= 10 && value.length <= 1000;
+        
+        $(this).removeClass('is-invalid is-valid');
+        if (value.length > 0) {
+            $(this).addClass(isValid ? 'is-valid' : 'is-invalid');
+        }
+        
+        // Contador de caracteres
+        const counter = $(this).siblings('.char-counter');
+        if (counter.length === 0) {
+            $(this).after(`<div class="char-counter text-muted">${value.length}/1000 caracteres</div>`);
+        } else {
+            counter.text(`${value.length}/1000 caracteres`);
+        }
+    });
+
+    // ===== INTERCEPTAR ENVIO DO FORMULÁRIO =====
+        $('#contatoForm').on('submit', function(e) {
+            console.log('🔥 SUBMIT INTERCEPTADO!');
+            
+            // FORÇAR CANCELAMENTO
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            console.log('✅ preventDefault() executado');
+            
+            const form = $(this);
+            const formData = new FormData(this);
+            const submitBtn = $('#submitBtn');
+            const originalBtnText = submitBtn.html();
+
+            // ===== VALIDAÇÕES LOCAIS =====
+            const timeDiff = (Date.now() - formLoadTime) / 1000;
+            console.log('⏱️ Tempo no formulário:', timeDiff.toFixed(1) + 's');
+            
+            if (timeDiff < 5) {
+                console.log('❌ Tempo insuficiente');
+                showErrorModal('Ops!', 'Por favor, revise seus dados antes de enviar.', 'Aguarde alguns segundos.');
+                return false;
+            }
+
+            const telefone = telInput.val().replace(/\D/g, '');
+            console.log('📞 Telefone:', telefone, '(' + telefone.length + ' dígitos)');
+            
+            if (telefone.length > 0 && telefone.length !== 10 && telefone.length !== 11) {
+                console.log('❌ Telefone inválido');
+                telInput.addClass('is-invalid').focus();
+                showErrorModal('Telefone Inválido', 
+                    `O telefone deve ter 10 ou 11 dígitos.\nVocê digitou: ${telefone.length} dígitos`, 
+                    'Corrija e tente novamente.');
+                return false;
+            }
+
+            // ===== LIMPAR ERROS =====
+            clearValidationErrors();
+
+            // ===== LOADING =====
+            console.log('🔄 Ativando loading...');
+            submitBtn.prop('disabled', true)
+                    .html('<i class="fa fa-spinner fa-spin"></i> Enviando...');
+
+            // ===== AJAX =====
+            console.log('📡 Iniciando AJAX...');
+            $.ajax({
+                url: '{{ route("contato.enviar") }}',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                timeout: 30000,
+                
+                beforeSend: function() {
+                    console.log('📤 Enviando requisição...');
+                },
+                
+                success: function(response) {
+                    console.log('✅ SUCESSO:', response);
+                    
+                    if (response.success) {
+                        form[0].reset();
+                        clearValidationErrors();
+                        
+                        const mensagem = response.message || 'Mensagem enviada com sucesso!';
+                        const protocolo = response.protocolo ? 
+                            `Protocolo: ${response.protocolo}` : 
+                            'Entraremos em contato em breve!';
+                        
+                        showSuccessModal('Mensagem Enviada!', mensagem, protocolo);
+                        $('html, body').animate({ scrollTop: 0 }, 800);
+                        
+                    } else {
+                        console.log('❌ Erro no response:', response.message);
+                        showErrorModal('Erro', response.message || 'Erro inesperado.', 'Tente novamente.');
+                    }
+                },
+                
+                error: function(xhr, status, error) {
+                    console.error('❌ ERRO AJAX:', {
+                        status: xhr.status,
+                        statusText: xhr.statusText,
+                        responseText: xhr.responseText,
+                        error: error
+                    });
+                    
+                    if (xhr.status === 422) {
+                        console.log('🔍 Erro de validação');
+                        const errors = xhr.responseJSON?.errors || {};
+                        displayValidationErrors(errors);
+                        
+                        const firstError = Object.values(errors)[0]?.[0] || 'Verifique os campos destacados.';
+                        showErrorModal('Dados Inválidos', firstError, 'Corrija e tente novamente.');
+                        
+                    } else if (xhr.status === 429) {
+                        console.log('⏳ Rate limit');
+                        showErrorModal('Muitas Tentativas', 
+                            'Você atingiu o limite de envios por hora.', 
+                            'Tente novamente mais tarde ou use o WhatsApp.');
+                        
+                    } else if (xhr.status === 419) {
+                        console.log('🔐 CSRF expirado');
+                        showErrorModal('Sessão Expirada', 
+                            'A página ficou aberta por muito tempo.', 
+                            'Recarregue a página e tente novamente.');
+                        
+                    } else if (xhr.status === 500) {
+                        console.log('💥 Erro interno');
+                        showErrorModal('Erro no Servidor', 
+                            'Ocorreu um erro interno.', 
+                            'Tente novamente ou entre em contato pelo WhatsApp.');
+                        
+                    } else if (status === 'timeout') {
+                        console.log('⏰ Timeout');
+                        showErrorModal('Tempo Esgotado', 
+                            'A conexão demorou muito para responder.', 
+                            'Verifique sua internet e tente novamente.');
+                        
+                    } else {
+                        console.log('❓ Erro desconhecido');
+                        showErrorModal('Erro de Conexão', 
+                            'Não foi possível enviar a mensagem.', 
+                            'Verifique sua conexão e tente novamente.');
+                    }
+                },
+                
+                complete: function() {
+                    console.log('🏁 Restaurando botão...');
+                    submitBtn.prop('disabled', false).html(originalBtnText);
+                }
+            });
+            
+            console.log('🛑 Retornando false');
+            return false;
+        });
+
+        // ===== FUNÇÕES AUXILIARES =====
+        function showSuccessModal(title, message, footer) {
+            console.log('🎉 Exibindo modal de sucesso');
+            $('#modalTitle').text(title);
+            $('#msgretorno').text(message);
+            $('#msgfim').text(footer);
+            
+            const modalContent = $('#modalcontato .modal-content');
+            modalContent.removeClass('modal-error').addClass('modal-success');
+            
+            $('#modalcontato').modal('show');
+        }
+
+        function showErrorModal(title, message, footer) {
+            console.log('⚠️ Exibindo modal de erro');
+            $('#modalTitle').text(title);
+            $('#msgretorno').text(message);
+            $('#msgfim').text(footer);
+            
+            const modalContent = $('#modalcontato .modal-content');
+            modalContent.removeClass('modal-success').addClass('modal-error');
+            
+            $('#modalcontato').modal('show');
+        }
+
+        function displayValidationErrors(errors) {
+            console.log('📝 Exibindo erros de validação:', errors);
+            Object.keys(errors).forEach(field => {
+                const input = $(`[name="${field}"]`);
+                const errorMessages = errors[field];
+                
+                input.addClass('is-invalid');
+                input.siblings('.invalid-feedback').remove();
+                input.after(`<div class="invalid-feedback">${errorMessages[0]}</div>`);
+            });
+            
+            $('.is-invalid').first().focus();
+        }
+
+        function clearValidationErrors() {
+            $('.is-invalid, .is-valid').removeClass('is-invalid is-valid');
+            $('.invalid-feedback').remove();
+            $('.char-counter').remove();
+            $('input, textarea').css('border-color', '#ced4da');
+        }
+
+        // ===== EVENTOS DO MODAL =====
+        $('#modalcontato').on('hidden.bs.modal', function() {
+            $(this).find('.modal-content').removeClass('modal-success modal-error');
+        });
+
+        console.log('✅ Script carregado com sucesso!');
+    });
+
+    // FUNÇÃO GLOBAL PARA TESTE
+    window.testarFormulario = function() {
+        console.log('🧪 TESTE MANUAL');
+        $('#contatoForm').trigger('submit');
+    };
+</script>
     
 </body>
 

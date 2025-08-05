@@ -5,8 +5,12 @@ Route::get('/', function () {
     return view('index');
 });
 
+/* Route::post('/contato', [App\Http\Controllers\ContatoController::class, 'enviar'])
+    ->name('contato.enviar'); */
+
 Route::post('/contato', [App\Http\Controllers\ContatoController::class, 'enviar'])
-    ->name('contato.enviar');
+->middleware(['throttle:3,60', 'anti-spam']) // 3 tentativas por hora
+->name('contato.enviar');
 
 Route::get('/ofertas-agenda', function () {
     return view('ofertas-agenda');
@@ -44,6 +48,15 @@ Route::get('/qualificacao-clientes', function () {
 Route::get('/template-barbearia-gentleman', function () {
     return view('portfolio.barbearia.template-barbearia-gentleman');
 })->name('template.barbearia');
+
+Route::get('/template-estetica', function () {
+    return view('portfolio.estetica.template-estetica'); // ✅ CORRETO
+});
+
+Route::get('/template-estetica', function () {
+    return view('portfolio.estetica.template-estetica');
+})->name('template.estetica');
+
 
 
 /* Route::get('/ofertas-agenda', function () {
