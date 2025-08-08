@@ -49,13 +49,19 @@ Route::get('/template-barbearia-gentleman', function () {
     return view('portfolio.barbearia.template-barbearia-gentleman');
 })->name('template.barbearia');
 
-Route::get('/template-estetica', function () {
-    return view('portfolio.estetica.template-estetica'); // ✅ CORRETO
-});
+
 
 Route::get('/template-estetica', function () {
     return view('portfolio.estetica.template-estetica');
 })->name('template.estetica');
+
+Route::get('/clinica-odonto', function () {
+    return view('portfolio.clinica-odonto.clinica-odonto');
+})->name('clinica-odonto');
+
+Route::get('/consultorio-dentista', function () {
+    return view('portfolio.clinica-odonto.clinica-dentista');
+})->name('consultorio-dentista');
 
 
 

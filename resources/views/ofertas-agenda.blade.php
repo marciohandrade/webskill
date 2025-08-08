@@ -1378,7 +1378,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <div class="badge">🚀 OFERTA DE LANÇAMENTO - Primeiros 10 Estabelecimentos da Região</div>
+                <div class="badge">🚀 OFERTA DE LANÇAMENTO - Primeiros 50 Estabelecimentos</div>
                 
                 <h1 class="hero-title">Teste <span class="highlight">Grátis 15 Dias</span><br><br>
                             Sistema que 
@@ -1393,7 +1393,7 @@
                 <div class="price-highlight">
                     <div class="price-old">Preço oficial: R$297/mês</div>
                     <div class="price-new">R$97/mês</div>
-                    <div class="price-period">Durante Um Ano</div>
+                    <div class="price-period">Comece Já !</div>
                 </div>
                 <p></p>
                 <p></p>
@@ -1525,12 +1525,12 @@
             <div class="trial-value">
                 <h3>🎯 Por Que Oferecemos Trial Gratuito?</h3>
                 <p>
-                    Porque sabemos que <strong>em 7 dias você vai ver</strong> sua agenda mais organizada, 
-                    <strong>em 15 dias</strong> terá 40% mais agendamentos confirmados!
+                    Porque sabemos que <strong>em 15 dias você vai ver</strong> sua agenda mais organizada, e 
+                    <strong>clientes que seguem nossas práticas veem até 40% mais agendamentos</strong> confirmados!
                 </p>
                 <div class="trial-stats">
                     <div class="trial-stat">
-                        <div class="trial-stat-number">7 dias</div>
+                        <div class="trial-stat-number">até 7 dias</div>
                         <div class="trial-stat-label">Para configuração</div>
                     </div>
                     <div class="trial-stat">
