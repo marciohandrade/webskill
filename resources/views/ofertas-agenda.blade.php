@@ -1535,7 +1535,7 @@
                     </div>
                     <div class="trial-stat">
                         <div class="trial-stat-number">+40%</div>
-                        <div class="trial-stat-label">Agendamentos em 15 dias</div>
+                        <div class="trial-stat-label"> Aumento registrado em 15 dias</div>
                     </div>
                     <div class="trial-stat">
                         <div class="trial-stat-number">95%</div>

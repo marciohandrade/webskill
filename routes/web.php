@@ -49,8 +49,6 @@ Route::get('/template-barbearia-gentleman', function () {
     return view('portfolio.barbearia.template-barbearia-gentleman');
 })->name('template.barbearia');
 
-
-
 Route::get('/template-estetica', function () {
     return view('portfolio.estetica.template-estetica');
 })->name('template.estetica');
@@ -62,6 +60,10 @@ Route::get('/clinica-odonto', function () {
 Route::get('/consultorio-dentista', function () {
     return view('portfolio.clinica-odonto.clinica-dentista');
 })->name('consultorio-dentista');
+
+Route::get('/reativar-clientes', function () {
+    return view('portfolio.negocios.reativar-clientes');
+})->name('reativar-clientes');
 
 
 
